@@ -1,6 +1,5 @@
 package maciejheintze.example.weatherapp.model
 
-
 data class CurrentWeather(
     var base: String = "",
     var clouds: Clouds = Clouds(),

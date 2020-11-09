@@ -7,5 +7,73 @@
     android:layout_height="match_parent"
     tools:context=".ResultActivity">
 
+    <ImageView
+      android:id="@+id/weather_icon_id"
+      android:layout_width="@dimen/icon_size"
+      android:layout_height="@dimen/icon_size"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/temperature_text_view_id"
+      app:layout_constraintTop_toBottomOf="@id/city_and_country_text_view_id"
+      android:layout_marginTop="@dimen/icon_top_margin"/>
 
+    <TextView
+        android:id="@+id/city_and_country_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/city_text_size"
+        android:layout_margin="@dimen/city_text_view_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/temperature_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/weather_icon_id"
+        app:layout_constraintTop_toTopOf="@id/weather_icon_id"
+        app:layout_constraintBottom_toBottomOf="@id/weather_icon_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/temperature_text_view_text_size"/>
+
+    <TextView
+        android:id="@+id/real_feel_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weather_icon_id"
+        android:layout_marginTop="@dimen/info_text_view_top_margin"
+        android:textSize="@dimen/info_text_size"/>
+
+    <TextView
+        android:id="@+id/weather_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/info_text_size"
+        app:layout_constraintTop_toBottomOf="@id/real_feel_text_view_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/info_text_view_top_margin"/>
+
+    <TextView
+        android:id="@+id/min_max_temp_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/info_text_size"
+        app:layout_constraintTop_toBottomOf="@id/weather_text_view_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/info_text_view_top_margin"/>
+
+
+    <TextView
+        android:id="@+id/pressure_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/info_text_size"
+        app:layout_constraintTop_toBottomOf="@id/min_max_temp_text_view_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/info_text_view_top_margin"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

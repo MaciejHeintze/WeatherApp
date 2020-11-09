@@ -13,5 +13,8 @@ class Constants {
         const val TEMP_MAX_ID = "TEMP_MAX_ID"
         const val TEMP_MIN_ID = "TEMP_MIN_ID"
         const val PRESSURE_ID = "PRESSURE_ID"
+        const val ICON_ID = "ICON_ID"
+        const val CELCIUS_SIGN = "\u2103"
+        const val METRIC_ID = "metric"
     }
 }
