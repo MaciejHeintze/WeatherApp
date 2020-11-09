@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="api_key">1ea8ffeb5ffe9cfd599b26dd1f50055c</string>
+    <string name="forecast_text_view">Weather Forecast</string>
+    <string name="edit_text_hint">Enter country, city or zip code</string>
+    <string name="button_text">SEARCH</string>
 </resources>
