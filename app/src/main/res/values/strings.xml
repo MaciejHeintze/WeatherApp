@@ -7,4 +7,5 @@
     <string name="longitude_text">longitude</string>
     <string name="latitude_text">latitude</string>
     <string name="geographical_coord_text">Search by geographical coordinates</string>
+    <string name="change_units_text_view">Change units:</string>
 </resources>

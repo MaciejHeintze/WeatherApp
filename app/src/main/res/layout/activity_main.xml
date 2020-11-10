@@ -101,5 +101,24 @@
         app:layout_constraintTop_toBottomOf="@id/geo_cor_edit_text_field_id"
         android:background="@drawable/button_rounded_corners"/>
 
+    <TextView
+        android:id="@+id/text_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/change_units_text_view_margin"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/search_by_geo_coordinates_button"
+        app:layout_constraintBottom_toTopOf="@id/units_picker"
+        android:text="@string/change_units_text_view"
+        android:textSize="@dimen/units_text_view_text_size"/>
 
+    <NumberPicker
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_id"
+        android:id="@+id/units_picker"
+        android:layout_width="@dimen/units_picker_width"
+        android:layout_height="@dimen/units_picker_height" />
 </androidx.constraintlayout.widget.ConstraintLayout>

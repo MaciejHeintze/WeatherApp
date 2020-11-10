@@ -15,6 +15,5 @@ class Constants {
         const val PRESSURE_ID = "PRESSURE_ID"
         const val ICON_ID = "ICON_ID"
         const val CELCIUS_SIGN = "\u2103"
-        const val METRIC_ID = "metric"
     }
 }
