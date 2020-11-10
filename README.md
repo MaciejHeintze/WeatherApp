@@ -7,5 +7,7 @@ Insert input to search for places in the world to check the current weather. You
 - postal code
 - geographical coordinates
 
-![weatherapp](https://user-images.githubusercontent.com/22914106/98699236-360f8800-2377-11eb-90bd-d214837cdfa3.png)
+Language: Kotlin
+
+![weatherapp](https://user-images.githubusercontent.com/22914106/98715705-d0c59200-238a-11eb-9315-3167897287ac.png)
 
