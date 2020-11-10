@@ -29,6 +29,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
     val apiKey : String by lazy{ resources.getString(R.string.api_key) }
+    private lateinit var country : String
+    private lateinit var cityName : String
+    private lateinit var weather : String
+    private lateinit var temperature : String
+    private lateinit var feels : String
+    private lateinit var temp_max : String
+    private lateinit var temp_min : String
+    private lateinit var pressure : String
+    private lateinit var icon : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +52,13 @@ class MainActivity : AppCompatActivity() {
                 fetchData(searchString)
             }
         }
+        search_by_geo_coordinates_button.setOnClickListener {
+            if(!lat_search_edit_text_id.text.isNullOrEmpty() || !lon_search_edit_text_id.text.isNullOrEmpty()){
+                val lat = lat_search_edit_text_id.text.toString()
+                val lon = lon_search_edit_text_id.text.toString()
+                searchByGeoCoordinates(lat, lon)
+            }
+        }
     }
 
     private fun fetchData(value: String){
@@ -52,30 +68,56 @@ class MainActivity : AppCompatActivity() {
         viewModel.getWeather(value, apiKey, METRIC_ID)
         viewModel.myResponse.observe(this, Observer { response ->
             if(response.isSuccessful){
-                val country = response.body()?.sys?.country.toString()
-                val cityName = response.body()?.name.toString()
-                val weather = response.body()?.weather?.get(0)?.main.toString()
-                val temperature = response.body()?.main?.temp.toString()
-                val feels = response.body()?.main?.feelsLike.toString()
-                val temp_max = response.body()?.main?.tempMax.toString()
-                val temp_min = response.body()?.main?.tempMin.toString()
-                val pressure = response.body()?.main?.pressure.toString()
-                val icon = response.body()?.weather?.get(0)?.icon.toString()
-
-                val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra(COUNTRY_ID, country)
-                intent.putExtra(CITY_NAME_ID, cityName)
-                intent.putExtra(WEATHER_ID, weather)
-                intent.putExtra(TEMPERATURE_ID, temperature)
-                intent.putExtra(FEELS_LIKE_ID, feels)
-                intent.putExtra(TEMP_MAX_ID, temp_max)
-                intent.putExtra(TEMP_MIN_ID, temp_min)
-                intent.putExtra(PRESSURE_ID, pressure)
-                intent.putExtra(ICON_ID, icon)
-                startActivity(intent)
+                country = response.body()?.sys?.country.toString()
+                cityName = response.body()?.name.toString()
+                weather = response.body()?.weather?.get(0)?.main.toString()
+                temperature = response.body()?.main?.temp.toString()
+                feels = response.body()?.main?.feelsLike.toString()
+                temp_max = response.body()?.main?.tempMax.toString()
+                temp_min = response.body()?.main?.tempMin.toString()
+                pressure = response.body()?.main?.pressure.toString()
+                icon = response.body()?.weather?.get(0)?.icon.toString()
+                sendData()
             }else{
                 Toast.makeText(this, "Wrong input! No data found", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    private fun searchByGeoCoordinates(lat: String, lon: String){
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getWeatherByGeoCoordinates(lat, lon, apiKey, METRIC_ID)
+        viewModel.myResponse.observe(this, Observer { response ->
+            if (response.isSuccessful){
+                country = response.body()?.sys?.country.toString()
+                cityName = response.body()?.name.toString()
+                weather = response.body()?.weather?.get(0)?.main.toString()
+                temperature = response.body()?.main?.temp.toString()
+                feels = response.body()?.main?.feelsLike.toString()
+                temp_max = response.body()?.main?.tempMax.toString()
+                temp_min = response.body()?.main?.tempMin.toString()
+                pressure = response.body()?.main?.pressure.toString()
+                icon = response.body()?.weather?.get(0)?.icon.toString()
+                sendData()
+            }else{
+                Toast.makeText(this, "Wrong input! No data found", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun sendData(){
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra(COUNTRY_ID, country)
+        intent.putExtra(CITY_NAME_ID, cityName)
+        intent.putExtra(WEATHER_ID, weather)
+        intent.putExtra(TEMPERATURE_ID, temperature)
+        intent.putExtra(FEELS_LIKE_ID, feels)
+        intent.putExtra(TEMP_MAX_ID, temp_max)
+        intent.putExtra(TEMP_MIN_ID, temp_min)
+        intent.putExtra(PRESSURE_ID, pressure)
+        intent.putExtra(ICON_ID, icon)
+        startActivity(intent)
     }
 }

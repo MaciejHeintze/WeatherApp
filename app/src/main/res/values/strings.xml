@@ -4,4 +4,7 @@
     <string name="forecast_text_view">Weather Forecast</string>
     <string name="edit_text_hint">Enter country, city or zip code</string>
     <string name="button_text">SEARCH</string>
+    <string name="longitude_text">longitude</string>
+    <string name="latitude_text">latitude</string>
+    <string name="geographical_coord_text">Search by geographical coordinates</string>
 </resources>

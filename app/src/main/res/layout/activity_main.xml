@@ -44,4 +44,62 @@
         android:layout_marginTop="@dimen/button_top_margin"
         android:background="@drawable/button_rounded_corners"
         android:text="@string/button_text"/>
+
+    <TextView
+        android:id="@+id/text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/geographical_coord_text"
+        android:textSize="@dimen/coord_text_view_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_button_id"
+        android:layout_marginTop="@dimen/coord_text_view_top_margin"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/geo_cor_edit_text_field_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/geo_cor_1_edit_text_field_id"
+        app:layout_constraintTop_toBottomOf="@id/text_view_id"
+        android:layout_width="@dimen/coord_edit_text_width"
+        android:layout_height="@dimen/edit_text_hight"
+        android:layout_margin="@dimen/edit_text_margin"
+        android:hint="@string/latitude_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lat_search_edit_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/geo_cor_1_edit_text_field_id"
+        app:layout_constraintStart_toEndOf="@id/geo_cor_edit_text_field_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_id"
+        android:layout_width="@dimen/coord_edit_text_width"
+        android:layout_height="@dimen/edit_text_hight"
+        android:layout_margin="@dimen/edit_text_margin"
+        android:hint="@string/longitude_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lon_search_edit_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/search_by_geo_coordinates_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text"
+        android:layout_margin="@dimen/button_top_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/geo_cor_edit_text_field_id"
+        android:background="@drawable/button_rounded_corners"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

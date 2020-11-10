@@ -5,3 +5,4 @@ Insert input to search for places in the world to check the current weather. You
 - city
 - country
 - postal code
+- geographical coordinates

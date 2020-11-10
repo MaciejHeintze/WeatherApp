@@ -17,4 +17,11 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             myResponse.value = response
         }
     }
+
+    fun getWeatherByGeoCoordinates(lat: String, lon: String, apiKey: String, metric: String){
+        viewModelScope.launch {
+            val response = repository.getWeatherByGeoCoordinates(lat, lon, apiKey, metric)
+            myResponse.value = response
+        }
+    }
 }
