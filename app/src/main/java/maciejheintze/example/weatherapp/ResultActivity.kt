@@ -1,8 +1,10 @@
 package maciejheintze.example.weatherapp
 
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_result.*
 import maciejheintze.example.weatherapp.Constants.Companion.CELCIUS_SIGN
@@ -15,12 +17,15 @@ import maciejheintze.example.weatherapp.Constants.Companion.TEMPERATURE_ID
 import maciejheintze.example.weatherapp.Constants.Companion.TEMP_MAX_ID
 import maciejheintze.example.weatherapp.Constants.Companion.TEMP_MIN_ID
 import maciejheintze.example.weatherapp.Constants.Companion.WEATHER_ID
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
         getData()
+        getCurrentTime()
     }
 
     private fun getData(){
@@ -47,5 +52,14 @@ class ResultActivity : AppCompatActivity() {
         real_feel_text_view_id.text = "Real feel: $feels$CELCIUS_SIGN"
         min_max_temp_text_view_id.text = "max: $max$CELCIUS_SIGN/ min: $min$CELCIUS_SIGN"
         pressure_text_view_id.text = "Pressure: $pressure"
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getCurrentTime(){
+        val time = LocalDateTime.now().toString()
+        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
+        val output: String = formatter.format(parser.parse(time))
+
+        updated_at_textview.text = "Updated at: $output"
     }
 }
